@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه سوم | طراحی واکنش‌گرا</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: Tahoma, sans-serif;
+            background-color: #f0f4ff;
+            color: #333;
+        }
+
+        header {
+            max-width: 900px;
+            margin: 0 auto 25px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        h1,
+        h2 {
+            color: #6c4cf1;
+        }
+
+        p {
+            line-height: 2;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .demo-card {
+            padding: 25px 18px;
+            background-color: white;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .demo-card h2 {
+            font-size: 21px;
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 12px 22px;
+            background-color: #6c4cf1;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .back-link:hover {
+            background-color: #4c30c9;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 18px 12px;
+            }
+
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+                line-height: 1.7;
+            }
+
+            .demo-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>📱 طراحی برای همه صفحه‌ها</h1>
+        <p>
+            این پروژه نشان می‌دهد چطور با CSS می‌توانیم
+            چیدمان سایت را برای موبایل و کامپیوتر تنظیم کنیم.
+        </p>
+    </header>
+
+    <main class="demo-container">
+
+        <section class="demo-card">
+            <h2>💻 کامپیوتر</h2>
+            <p>کارت‌ها در صفحه بزرگ کنار هم نمایش داده می‌شوند.</p>
+        </section>
+
+        <section class="demo-card">
+            <h2>📱 موبایل</h2>
+            <p>در صفحه کوچک، کارت‌ها زیر هم قرار می‌گیرند.</p>
+        </section>
+
+        <section class="demo-card">
+            <h2>🎨 طراحی</h2>
+            <p>رنگ‌ها، فاصله‌ها و اندازه‌ها با صفحه هماهنگ می‌شوند.</p>
+        </section>
+
+    </main>
+
+    <a class="back-link" href="index.html">
+        برگشت به سایت اصلی 💜
+    </a>
+
+</body>
+</html>
