@@ -155,33 +155,66 @@
         </div>
     </main>
 
-    <script>
-        const contactForm = document.getElementById("contact-form");
-        const formStatus = document.getElementById("form-status");
+   <script>
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
 
-        contactForm.addEventListener("submit", function(event) {
-            event.preventDefault();
+contactForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
 
-            const name = document.getElementById("name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const message = document.getElementById("message").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-            if (name === "" || email === "" || message === "") {
-                formStatus.textContent = "لطفاً همه کادرها رو پر کن 💜";
-                formStatus.style.color = "#c0392b";
-                formStatus.style.backgroundColor = "#fee2e2";
-                formStatus.style.padding = "12px";
-                return;
+    if (!name || !email || !message) {
+        formStatus.textContent = "لطفاً همه کادرها رو پر کن 💜";
+        formStatus.style.color = "#c0392b";
+        formStatus.style.backgroundColor = "#fee2e2";
+        formStatus.style.padding = "12px";
+        return;
+    }
+
+    formStatus.textContent = "در حال ارسال پیام...";
+    formStatus.style.color = "#6c4cf1";
+    formStatus.style.backgroundColor = "#eee9ff";
+    formStatus.style.padding = "12px";
+
+    try {
+        const response = await fetch(
+            "https://api.web3forms.com/submit",
+            {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json"
+                },
+                body: new FormData(contactForm)
             }
+        );
 
+        const result = await response.json();
+
+        if (response.ok && result.success === true) {
             formStatus.textContent =
-                "ممنون " + name + " جان! فرم با موفقیت بررسی شد 💚";
-
+                "پیامت با موفقیت ارسال شد! ممنون از اعتمادت 💚";
             formStatus.style.color = "#166534";
             formStatus.style.backgroundColor = "#dcfce7";
-            formStatus.style.padding = "12px";
-        });
-    </script>
+            contactForm.reset();
+        } else {
+            formStatus.textContent =
+                result.message ||
+                result.body?.message ||
+                "ارسال انجام نشد. لطفاً تنظیمات فرم رو بررسی کن.";
+            formStatus.style.color = "#c0392b";
+            formStatus.style.backgroundColor = "#fee2e2";
+        }
+    } catch (error) {
+        formStatus.textContent =
+            "ارتباط برقرار نشد. اینترنت رو بررسی کن و دوباره امتحان کن.";
+        formStatus.style.color = "#c0392b";
+        formStatus.style.backgroundColor = "#fee2e2";
+    }
+});
+</script>
 
 </body>
 </html>
