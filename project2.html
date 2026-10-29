@@ -119,10 +119,28 @@
         </p>
 
         <form id="contact-form">
+            <input
+    type="hidden"
+    name="access_key"
+    value="b2e73e95-d5c2-4a7d-9501-1340131b4b14"
+>
+
+<input
+    type="hidden"
+    name="subject"
+    value="پیام جدید از سایت سیما"
+>
+
+<input
+    type="checkbox"
+    name="botcheck"
+    style="display: none;"
+>
             <label for="name">نام شما:</label>
             <input
                 type="text"
                 id="name"
+                name="name"
                 placeholder="نامت رو بنویس"
                 required
             >
@@ -131,6 +149,7 @@
             <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="example@mail.com"
                 required
             >
@@ -138,6 +157,7 @@
             <label for="message">پیام شما:</label>
             <textarea
                 id="message"
+                name="message"
                 rows="5"
                 placeholder="پیامت رو اینجا بنویس"
                 required
@@ -180,6 +200,8 @@ contactForm.addEventListener("submit", async function(event) {
     formStatus.style.padding = "12px";
 
     try {
+        const formData = new FormData(contactForm);
+        console.log("Access key exists:", formData.has("access_key"));
         const response = await fetch(
             "https://api.web3forms.com/submit",
             {
@@ -187,7 +209,8 @@ contactForm.addEventListener("submit", async function(event) {
                 headers: {
                     "Accept": "application/json"
                 },
-                body: new FormData(contactForm)
+                
+            body: formData
             }
         );
 
