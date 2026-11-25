@@ -326,6 +326,40 @@ z-index: 100;
     background-color: #4c30c9;
     transform: translateY(-3px);
 }
+  /* اصلاح نهایی منو در موبایل */
+@media (max-width: 600px) {
+    .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        gap: 6px;
+        padding: 10px;
+        margin: 0 auto 20px;
+    }
+
+    .site-nav .site-logo {
+        flex: 0 0 100%;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+   .site-nav .site-logo img {
+    width: 100px;
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+    .site-nav a {
+        white-space: nowrap;
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
    </style>
 </head>
 
